@@ -8,6 +8,7 @@ import setRoute from './routes/routes.js';
 
 const app = express();
 const port = process.env.PORT || 3000;
+connectDB();
 
 // middlewares
 const middlewares = [
@@ -35,7 +36,13 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: "Internal Server Error" });
 });
 
-app.listen(port, () => {
-    connectDB();
-    console.log(`Server is Running on port ${port}!`);
-});
+
+// use for another server
+// app.listen(port, () => {
+//     connectDB();
+//     console.log(`Server is Running on port ${port}!`);
+// });
+
+
+// only use for deploy in vercel
+export default app;
