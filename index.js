@@ -7,7 +7,7 @@ import connectDB from './config/connectDB.js'; // import database
 import setRoute from './routes/routes.js';
 
 const app = express();
-const port = process.env.PORT || 3000;
+// const port = process.env.PORT || 3000;
 connectDB();
 
 // middlewares
