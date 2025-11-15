@@ -4,11 +4,10 @@ import cors from 'cors';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import connectDB from './config/connectDB.js'; // import database
-import setRoute from './routes/routes.js';
+import setRoute from './routes/routes.js'; // import routes
 
 const app = express();
-// const port = process.env.PORT || 3000;
-connectDB();
+const port = process.env.PORT || 3000;
 
 // middlewares
 const middlewares = [
@@ -37,12 +36,7 @@ app.use((err, req, res, next) => {
 });
 
 
-// use for another server
-// app.listen(port, () => {
-//     connectDB();
-//     console.log(`Server is Running on port ${port}!`);
-// });
-
-
-// only use for deploy in vercel
-export default app;
+app.listen(port, () => {
+    connectDB();
+    console.log(`Server is Running on port ${port}!`);
+});
